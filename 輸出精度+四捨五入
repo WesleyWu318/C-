@@ -1,0 +1,11 @@
+#include <iostream>
+#include<iomanip>//需要用到
+using namespace std;
+int main() {
+  double n = 22.0/7;
+  cout << n << endl;//預設六為有效位數
+  cout << setprecision(4) << n << endl;//調整有效位數(全部位數)
+  cout << fixed << n << endl;//調整小數()，有效位數沿襲前方設定setprecision(4)
+  cout << fixed << setprecision(3) << n << endl;//調整有效位數(只有小數)
+  //所以setprecision(3)設置的是小數點後面的位数，而非全部數字個數。
+}
