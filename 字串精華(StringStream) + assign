@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string.h>
+#include <sstream>
+#include <typeinfo>
+using namespace std;
+int main() {
+  //字串轉整數
+  string s,t;
+  int temp;
+  while(getline(cin,s)){
+    stringstream ss;
+    ss << s;
+    while(ss >> temp){
+      cout << temp << endl;
+    }
+  }
+  //切割字串
+  
+  string str3 = "hello world hcq!";
+  stringstream s1(str3);
+  
+  while(getline(s1,t,' ')){//類型,目的(string),停止條件
+    cout << temp << endl;
+  }
+  //string to int
+  string as;
+  cin >> as;
+  int b;
+  b = atoi(as.c_str());//string -> char -> int
+  cout << b << endl;
+  return 0;
+
+  string test_string="test_string";
+    char test_char[]="test_char", result_char[20];
+ 
+    string result_string1(test_char);//char -> string 1.
+
+    string result_string2;//char -> string 2.
+    result_string2.assign(test_char);
+    //#<string."h">
+    strcpy(result_char, test_string.c_str());//string -> char
+  //string -> char
+  string s3;
+  char a[51];
+  while(cin >> s3 && s3 != "#"){
+    strcpy(a,s3.c_str());    
+  }
+
+  //assign
+  string str1("hello");
+  string str2;
+  string strt;
+  string str4;
+  string str5;
+  //====================================
+  str2.assign(str1);
+  strt.assign("World",(0), 4);//從開頭拿後面幾個(包含)
+  str4.assign(str1, 2, 3);//從第幾個拿後面幾個(包含)
+  str5.assign(10, 'c');
+  //====================================
+  cout<<str1<<endl;//hello
+  cout<<str2<<endl;//hello
+  cout<<strt<<endl;//Worl
+  cout<<str4<<endl;//llo
+  cout<<str5<<endl;//cccccccccc
+}
