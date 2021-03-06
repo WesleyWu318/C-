@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+int DFS(int ,int);
+string s;
+int main() {
+  while(getline(cin,s)){
+    int ans = DFS(0,s.size());
+    cout << ans << endl;
+  }
+}
+int DFS(int f, int e){
+  //cout << s << endl;
+  int c = 0;
+  for(int i = e-1; i >= f; i--){
+    if(s[i] == ')') c++;
+    if(s[i] == '(') c--;
+    if(s[i] == '+' && c==0){
+      return DFS(f,i) + DFS(i+1,e);
+    }
+    if(s[i] == '-' && c==0){
+      return DFS(f,i) - DFS(i+1,e);
+    }
+  }
+  for(int i = e-1; i >= f; i--){
+    if(s[i] == ')') c++;
+    if(s[i] == '(') c--;
+    if(s[i] == '*' && c==0){
+      return DFS(f,i) * DFS(i+1,e);
+    }
+    if(s[i] == '/' && c==0){
+      return DFS(f,i) / DFS(i+1,e);
+    }
+    if(s[i] == '%' && c==0){
+      return DFS(f,i) % DFS(i+1,e);
+    }
+  }
+  if((s[f] == '(') && (s[e-1] == ')')) return DFS(f+1,e-1);
+  if((s[f] == ' ') && (s[e-1] == ' ')) return DFS(f+1,e-1);
+  if(s[f] == ' ') return DFS(f+1,e);
+  if(s[e-1] == ' ') return DFS(f,e-1);
+  int ans = 0;
+  if(isdigit(s[f])&&isdigit(s[e-1])){
+    for(int i=f ;i < e; i++){
+      ans = ans * 10 + (s[i]-'0');
+    }
+  }
+  return ans;
+}
