@@ -1,0 +1,64 @@
+#include <iostream>
+#define MAX 32
+using namespace std;
+int i, d[MAX];
+void To_binary(int n){
+  i = 0;  
+  while(n > 0){
+    d[i++] = n % 2;
+    n/=2;
+  }
+  if((i+1)%4) for(int j = (4 - (i+1)%4); j >=1; j--) cout << "0";
+  //補零
+  for(;i >=0; i--){//分格
+    cout << d[i];
+    if(!(i % 4)) cout << " ";
+  }
+  //看起來較爽
+}
+int main() {
+  int a, b, c;  
+  a = 0, b = 0;
+  printf("a = %d  b = %d\n",a,b);
+  printf("a | b = %d\n",a|b);//or運算
+  printf("a & b = %d\n",a&b);//and運算
+  printf("a ^ b = %d\n\n",a^b);//xor運算
+
+  a = 1, b = 0;
+  printf("a = %d  b = %d\n",a,b);
+  printf("a | b = %d\n",a|b);
+  printf("a & b = %d\n",a&b);
+  printf("a ^ b = %d\n\n",a^b);
+
+  a = 0, b = 1;
+  printf("a = %d  b = %d\n",a,b);
+  printf("a | b = %d\n",a|b);
+  printf("a & b = %d\n",a&b);
+  printf("a ^ b = %d\n\n",a^b);
+
+  a = 1, b = 1;
+  printf("a = %d  b = %d\n",a,b);
+  printf("a | b = %d\n",a|b);
+  printf("a & b = %d\n",a&b);
+  printf("a ^ b = %d\n\n",a^b);
+  cout << "*******************************************\n\n";
+  a = 60;// 60 = 0011 1100(二進位)
+  b = 13;// 13 = 0000 1101(二進位)  
+  cout << "a = " << a << " (digit) ," << "a = " ;
+  To_binary(a);
+  cout << "(binary)" << endl;
+  cout << "b = " << b << " (digit) ," << "b = " ;
+  To_binary(b);
+  cout << "(binary)\n" << endl;
+
+  c = a | b;  
+  cout << "c = a | b\nc = " << c << " (digit) ," << "c = "; To_binary(c); cout << "(binary)" << "\n\n";
+
+  c = a & b;
+  cout << "c = a & b\nc = " << c << " (digit) ," << "c = "; To_binary(c); cout << "(binary)" << "\n\n";
+
+  c = a ^ b;
+  cout << "c = a | b\nc = " << c << " (digit) ," << "c = "; To_binary(c); cout << "(binary)" << "\n\n";
+  
+  cout << "最高整數值: " << (1 << 8) -1 << "\n";
+}
